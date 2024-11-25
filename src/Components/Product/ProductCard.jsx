@@ -3,7 +3,7 @@ import CurrencyFomat from "../CurrencyFormat/CurrencyFormat";
 import classes from "./Product.module.css"
 
 function ProductCard({ product }) {
-  const { image, title, id, rating, price } = product;
+  const { image, title, rating, price } = product;
   return (
     <div className={`${classes.card__container} `}>
       <a href="">
