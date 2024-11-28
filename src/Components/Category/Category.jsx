@@ -6,7 +6,6 @@ function Category() {
   return (
     <section className={classes.category_container}>
       {categoryInfos.map((infos) => (
-        // Use parentheses for directly returning JSX
         <CategoryCard data={infos} key={infos.title} />
       ))}
     </section>
