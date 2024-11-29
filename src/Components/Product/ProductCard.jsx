@@ -4,30 +4,27 @@ import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import classes from "./Product.module.css";
 import { Link } from "react-router-dom";
 
-function ProductCard({ product = {} }) {
+function ProductCard({ product = {}, flex, renderDesc }) {
   // Destructure properties from the product object, providing default values if missing.This ensures rating is always defined even if product.rating is not passed.
-  const { image, title, id, rating = {}, price } = product;
+  const { image, title, id, rating = {}, price, description   } = product;
+  
 
   return (
-    <div className={`${classes.card__container}`}>
+    <div
+      className={`${classes.card__container} ${flex ? classes.product__flexed : ""}`}
+    >
       {/* Clickable image that links to the product's details page */}
       <Link to={`/products/${id}`}>
         <img src={image} alt={title} className={classes.img_container} />
       </Link>
 
       <div>
-        {/* Display the product title */}
         <h3>{title}</h3>
-
-        {/* Display the product rating */}
+        {renderDesc && <div style={{ maxWidth: "750px" }}>{description}</div>}
         <div className={classes.rating}>
-          {/* Show the star rating using Material-UI Rating component */}
           <Rating value={rating?.rate || 0} precision={0.1} />
-          {/* Display the number of reviews */}
           <small>{rating?.count || 0}</small>
         </div>
-
-        {/* Display the product price formatted by the custom CurrencyFormat component */}
         <div>
           <CurrencyFormat amount={price} />
         </div>
