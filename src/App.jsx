@@ -1,5 +1,6 @@
+import { Router } from "react-router-dom";
 import "./App.css";
-import Routing from "./Routing";
+import Routing from "./Router";
 
 function App() {
   return (

@@ -1,17 +1,24 @@
-
+// Import necessary hooks and components from React and other libraries
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import classes from "./header.module.css";
 import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
+import { DataContext } from "../DataProvider/DataProvider"; // Import DataContext for accessing the global state
 
+// Header component
 const Header = () => {
+  // Access the global state and basket data from the DataContext
+  const [state] = useContext(DataContext);
+
   return (
     <>
+      {/* Main header section */}
       <section className={classes.header}>
         <div className={classes.header__container}>
-          {/* Logo Section */}
+          {/* Logo section */}
           <div className={classes.logo__container}>
             <Link to="/">
               <img
@@ -20,9 +27,11 @@ const Header = () => {
                 className={classes.logo}
               />
             </Link>
-            {/* Delivery Section */}
+
+            {/* Delivery information section */}
             <div className={classes.delivery}>
-              <SlLocationPin aria-label="Location Pin" />
+              <SlLocationPin aria-label="Location Pin" />{" "}
+              {/* Location pin icon */}
               <div>
                 <p>Delivered to</p>
                 <span>Sweden</span>
@@ -30,27 +39,27 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Search Section */}
+          {/* Search bar section */}
           <div className={classes.search}>
             <select name="" id="" className={classes.search__select}>
-              <option value="">All</option>
+              <option value="">All</option>{" "}
+              {/* Dropdown menu for selecting a category */}
             </select>
             <input
               type="text"
-              name=""
-              id=""
               placeholder="Search Product"
               className={classes.search__input}
             />
-            <BsSearch size={25} className={classes.search__icon} />
+            <BsSearch size={25} className={classes.search__icon} />{" "}
+            {/* Search icon */}
           </div>
 
-          {/* Right Side Section */}
+          {/* Right side section with user account, orders, and cart */}
           <div className={classes.order__container}>
-            {/* Language Selector */}
+            {/* Language selection section */}
             <div className={classes.language}>
               <img
-                src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg"
+                src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" // US flag image for language selection
                 alt="US Flag"
               />
               <select name="" id="">
@@ -58,7 +67,7 @@ const Header = () => {
               </select>
             </div>
 
-            {/* Account Section */}
+            {/* Account section */}
             <Link to="/auth">
               <div>
                 <p>Sign In</p>
@@ -66,28 +75,29 @@ const Header = () => {
               </div>
             </Link>
 
-            {/* Orders Section */}
+            {/* Orders section */}
             <Link to="/orders">
               <p>Returns</p>
               <span>& Orders</span>
             </Link>
 
-            {/* Cart Section */}
+            {/* Shopping cart section */}
             <Link to="/cart" className={classes.cart}>
-              <BiCart size={35} aria-label="Shopping Cart" />
-              <span className={classes.cart__count}>0</span>
+              <BiCart size={35} aria-label="Shopping Cart" />{" "}
+              {/* Shopping cart icon */}
+              <span className={classes.cart__count}>{state.basket.length}</span>
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Lower header section  */}
       <LowerHeader />
     </>
   );
 };
 
 export default Header;
-
-
 
 // // import React from "react";
 // import { Link } from "react-router-dom";
