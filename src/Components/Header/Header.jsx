@@ -14,7 +14,7 @@ const Header = () => {
   const [state] = useContext(DataContext);
 
   return (
-    <>
+    <section className={classes.fixed}>
       {/* Main header section */}
       <section className={classes.header}>
         <div className={classes.header__container}>
@@ -93,7 +93,7 @@ const Header = () => {
 
       {/* Lower header section  */}
       <LowerHeader />
-    </>
+    </section>
   );
 };
 
