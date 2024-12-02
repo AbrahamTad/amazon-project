@@ -1,85 +1,82 @@
-/* Cart.modules.css */
+.mainContainer {
+  display: flex;
+  justify-content: space-between; /* Space between cart and subtotal */
+  align-items: flex-start; /* Align subtotal to the top */
+  gap: 10px;
+  margin-top: 20px;
+}
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  flex: 1; /* Let the container take the remaining space */
+}
+
+.container img {
+  width: 100px !important;
+}
+
+.container div:not(.subtotal) {
+  height: auto !important;
 }
 
 .cart__container {
-  width: 100%;
-  max-width: 800px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  margin-bottom: 20px;
 }
 
 .cart__container h2,
 .cart__container h3 {
-  margin: 10px 0;
-}
-
-.cart__container p {
-  margin: 10px 0;
-  font-size: 16px;
-  color: #555;
+  padding: 10px;
 }
 
 .cart__container hr {
-  margin: 20px 0;
-  border: 0;
-  border-top: 1px solid #eee;
+  margin: 10px;
 }
 
 .subtotal {
-  width: 100%;
-  max-width: 800px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-}
-
-.subtotal div {
+  min-width: 300px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
-}
-
-.subtotal p {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-}
-
-.subtotal span {
-  display: flex;
-  align-items: center;
-}
-
-.subtotal input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-.subtotal small {
-  margin-right: 20px;
+  gap: 20px;
+  border: 1px solid rgb(193, 193, 193);
+  background-color: rgb(242, 241, 241);
+  border-radius: 5px;
+  position: sticky;
+  top: 0; /* Stick to the top when scrolling */
 }
 
 .subtotal a {
+  text-align: center;
+  width: 100px;
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: black; 
   text-decoration: none;
-  background-color: #3b5998;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
 }
 
 .subtotal a:hover {
-  background-color: #334d84;
+  background: var(--primary-shade);
+}
+
+.subtotal > div,
+.subtotal span {
+  display: flex;
+  gap: 20px;
+}
+
+.Start_Shopping {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 968px) {
+  .mainContainer {
+    flex-direction: column;
+  }
+
+  .subtotal {
+    width: 100%;
+    position: static; /* Remove sticky behavior on smaller screens */
+  }
 }
