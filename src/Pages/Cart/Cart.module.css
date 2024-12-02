@@ -1,9 +1,15 @@
-.container {
+lear.container {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 10px;
   margin-top: 20px;
+  }
+.container img {
+  width: 100px !important;
+ }
+.container div:not(.subtotal) {
+  height: auto !important;
 }
-
 .cart_container {
   padding: 20px;
 }
@@ -34,12 +40,11 @@
   width: 100px;
   border: none;
   background-color: var(--primary-color);
-  color: black;
   border-radius: 5px;
   padding: 5px 10px;
+  color: black; 
   text-decoration: none;
- 
-}
+  }
 
 .subtotal a:hover {
   background: var(--primary-shade);
@@ -52,7 +57,6 @@
 }
 .Start_Shopping {
   text-decoration: none;
-
 }
 
 /* .subtotal > div { display: flex; gap: 20px; } 
