@@ -26,7 +26,7 @@
 //       //   ...state,
 //       //   basket: [...state.basket, action.item], // Append the new item to the basket array
 //       // };
-    
+
 //       default:
 //       return state;
 //   }
@@ -51,11 +51,28 @@ export const reducer = (state, action) => {
           basket: [...state.basket, { ...action.item, amount: 1 }],
         };
       } else {
-        const updatedBasket = state.basket.map((item) =>{
-          return item.id === action.item.id? {...item, amount: item.amount + 1 } : item;
+        const updatedBasket = state.basket.map((item) => {
+          return item.id === action.item.id
+            ? { ...item, amount: item.amount + 1 }
+            : item;
         });
         return { ...state, basket: updatedBasket };
       }
+
+    case Type.REMOVE_FROM_BASKET:
+      const index = state.basket.findIndex((item) => item.id === action.id);
+      let newBasket = [...state.basket];
+      if (index >= 0) {
+        if (newBasket[index].amount > 1) {
+          newBasket[index] = { ...(newBasket[index].amount - 1) };
+        } else {
+          newBasket.splice(index, 1);
+        }
+      }
+      return {
+        ...state,
+        basket: newBasket,
+      };
 
     default:
       return state;

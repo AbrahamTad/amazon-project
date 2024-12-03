@@ -12,6 +12,7 @@ import { DataContext } from "../DataProvider/DataProvider"; // Import DataContex
 const Header = () => {
   // Access the global state and basket data from the DataContext
   const [state] = useContext(DataContext);
+  // const totalItems = state?.reduce()
 
   return (
     <section className={classes.fixed}>
