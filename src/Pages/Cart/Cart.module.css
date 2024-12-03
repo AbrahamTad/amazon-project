@@ -126,7 +126,13 @@ gap: 10px;
   border: none;
 }
 
+
+.btn:hover {
+  background: var(--primary-shade);
+}
+
 .subtotal {
+  margin-right: 2%;
   padding: 20px;
   min-width: 300px;
   display: flex;

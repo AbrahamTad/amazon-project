@@ -49,7 +49,7 @@ const decrement = (id) => {
             ) : (
               basket?.map((item, i) => (
                 // eslint-disable-next-line react/jsx-key
-                <section className={classes.cart__product}>
+                <section className={classes.cart_product}>
                   <ProductCard
                     key={i}
                     product={item}

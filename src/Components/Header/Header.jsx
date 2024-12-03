@@ -11,8 +11,12 @@ import { DataContext } from "../DataProvider/DataProvider"; // Import DataContex
 // Header component
 const Header = () => {
   // Access the global state and basket data from the DataContext
-  const [state] = useContext(DataContext);
+  // const [state] = useContext(DataContext);
   // const totalItems = state?.reduce()
+
+  const [{basket}, dispatch] = useContext(DataContext);
+    const totalItems = basket.reduce((amount, item) => {
+   return item.amount + amount}, 0);
 
   return (
     <section className={classes.fixed}>
@@ -86,7 +90,8 @@ const Header = () => {
             <Link to="/cart" className={classes.cart}>
               <BiCart size={35} aria-label="Shopping Cart" />{" "}
               {/* Shopping cart icon */}
-              <span className={classes.cart__count}>{state.basket.length}</span>
+              {/* <span className={classes.cart__count}>{state.basket.length}</span> */}
+              <span className={classes.cart__count}>{totalItems}</span>
             </Link>
           </div>
         </div>
