@@ -1,4 +1,4 @@
-/* lear.container {
+ /* lear.container {
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -61,16 +61,16 @@
   text-decoration: none;
 }
 
-/* .subtotal > div { display: flex; gap: 20px; } 
+.subtotal > div { display: flex; gap: 20px; } 
 
-.subtotal span { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; } */
+.subtotal span { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; } 
 
-/* @media screen and (max-width: 968px) {
+@media screen and (max-width: 968px) {
   .container {
     flex-direction: column;
-    order: 1;
+    order:1;
   }
-} */ 
+}  */
 
 .mainContainer {
   display: flex;
@@ -147,14 +147,16 @@ gap: 10px;
 }
 
 .subtotal a {
+  display: inline-block;
   text-align: center;
-  width: 100px;
-  border: none;
-  background-color: var(--primary-color);
+  padding: 10px 20px;
   border-radius: 5px;
-  padding: 5px 10px;
-  color: black; 
   text-decoration: none;
+  color:black;
+  background-color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .subtotal a:hover {
