@@ -6,7 +6,8 @@ import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from "./LowerHeader";
-import { DataContext } from "../DataProvider/DataProvider"; // Import DataContext for accessing the global state
+import { DataContext } from "../DataProvider/DataProvider";
+import { auth } from "../../Utility/firebase";
 
 // Header component
 const Header = () => {
@@ -14,9 +15,10 @@ const Header = () => {
   // const [state] = useContext(DataContext);
   // const totalItems = state?.reduce()
 
-  const [{basket}, dispatch] = useContext(DataContext);
-    const totalItems = basket.reduce((amount, item) => {
-   return item.amount + amount}, 0);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
+  const totalItems = basket.reduce((amount, item) => {
+    return item.amount + amount;
+  }, 0);
 
   return (
     <section className={classes.fixed}>
@@ -55,7 +57,7 @@ const Header = () => {
               placeholder="Search Product"
               className={classes.search__input}
             />
-            <BsSearch size={25} className={classes.search__icon} />{" "}
+            <BsSearch size={38} className={classes.search__icon} />{" "}
             {/* Search icon */}
           </div>
 
@@ -73,10 +75,21 @@ const Header = () => {
             </div>
 
             {/* Account section */}
-            <Link to="/auth">
+            <Link to={!user && "/auth"}>
               <div>
-                <p>Sign In</p>
-                <span>Account & Lists</span>
+                {user ? (
+                  <>
+                    <p>
+                      Hello, {user.displayName || user.email?.split("@")[0]}
+                    </p>
+                    <span onClick={() => auth.signOut()}>Sign Out</span>
+                  </>
+                ) : (
+                  <>
+                    <p>Hello, Sign In</p>
+                    <span>Account & Lists</span>
+                  </>
+                )}
               </div>
             </Link>
 
