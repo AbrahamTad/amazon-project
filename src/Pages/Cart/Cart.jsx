@@ -36,7 +36,13 @@ const decrement = (id) => {
       <div className={classes.mainContainer}>
         <section className={classes.container}>
           <div className={classes.cart__container}>
-            <h2>Hello, {user?.name || "Guest"}</h2>
+            {/* <h2>Hello, {user?.name || "Guest"}</h2> */}
+            <h2>
+              {" "}
+              <p>
+                Hello, {user?.displayName || user.email?.split("@")[0]}
+              </p>{" "}
+            </h2>
             <h3>Your Shopping Basket</h3>
             <hr />
             {basket?.length === 0 ? (

@@ -80,7 +80,7 @@ const Header = () => {
                 {user ? (
                   <>
                     <p>
-                      Hello, {user.displayName || user.email?.split("@")[0]}
+                      Hello, {user?.displayName || user.email?.split("@")[0]}
                     </p>
                     <span onClick={() => auth.signOut()}>Sign Out</span>
                   </>
