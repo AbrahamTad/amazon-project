@@ -1,15 +1,31 @@
-import react, { useContext } from "react";
+import react, { useContext, useState } from "react";
 import classes from "./Payment.module.css";
 import LayOut from "../../Components/LayOut/LayOut";
 import { DataContext } from "../../Components/DataProvider/DataProvider";
 import ProductCard from "../../Components/Product/ProductCard";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import CurrencyFomat from "../../Components/CurrencyFormat/CurrencyFormat";
 
 function Payment() {
   const [{ user, basket }] = useContext(DataContext);
   console.log(user);
+
   const totalItems = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
+
+  const total = basket?.reduce(
+    (amount, item) => item.price * item.amount + amount,
+    0
+  );
+
+  const [cardError, setCardError] = useState(null);
+  const stripe = useStripe();
+  const elements = useElements();
+  const handleChange = (e) => {
+    console.log(e);
+    e?.error?.message ? setCardError(e?.error?.message) : setCardError("");
+  };
 
   return (
     <LayOut>
@@ -23,7 +39,7 @@ function Payment() {
         <div className={classes.flex}>
           <h3>Delivery Address</h3>
           <div>
-            <div>{user.email}</div>
+            <div>{user?.email}</div>
             <div>123 Rect Lane</div>
             <div>Chicago, IL</div>
           </div>
@@ -44,20 +60,25 @@ function Payment() {
         {/* card form */}
         <div className={classes.flex}>
           <h3>Payment method</h3>
-          <div>
-            <div>
-              <form action=""></form>
+          <div className={classes.payment__card__container}>
+            <div className={classes.payment__details}>
+              <form action="">
+                {/* error */}
+                {cardError && <small>{cardError}</small>}
+                <CardElement onChange={handleChange} />
+
+                {/* price */}
+                <div className={classes.payment__price}>
+                  <div>
+                    <span style={{ display: "flex", gap: "10px" }}>
+                      <p>Total Order | </p> <CurrencyFomat amount={total} />
+                    </span>
+                  </div>
+                  <button>Pay Now</button>
+                </div>
+              </form>
             </div>
-            {/* yehen link tetekem video 25: dekika jemero
-https://docs.stripe.com/sdks/stripejs-react */}
           </div>
-          {/* <form>
-            <input type="text" placeholder="Card number" />
-            <input type="text" placeholder="MM/YY" />
-            <input type="text" placeholder="CVC" />
-            <input type="text" placeholder="Name on card" />
-            <button type="submit">Place Order</button>
-          </form> */}
         </div>
       </section>
     </LayOut>
