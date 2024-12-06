@@ -16,7 +16,7 @@ const Header = () => {
   // const totalItems = state?.reduce()
 
   const [{ user, basket }, dispatch] = useContext(DataContext);
-  const totalItems = basket.reduce((amount, item) => {
+  const totalItems = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
 
