@@ -1,10 +1,9 @@
 import firebase from "firebase/compat/app";
-
-import { getAuth } from "firebase/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import { getAuth } from "firebase/auth";
 
-// web app's Firebase configuration
+// Web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_AUTH_DOMAIN,
@@ -18,5 +17,6 @@ const firebaseConfig = {
 const app = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app();
+
 export const auth = getAuth(app);
-export const db = firebase.firestore;
+export const db = firebase.firestore();
