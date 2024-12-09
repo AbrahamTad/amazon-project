@@ -13,15 +13,23 @@ export const categoryInfos = [
     title: "Men's Clothing",
     name: "men's clothing",
     imgLink:
-      "http://m.media-amazon.com/images/I/618bcm65ksL._AC_UL480_FMwebp_QL65_.jpg",
+      "https://m.media-amazon.com/images/I/618bcm65ksL._AC_UL480_FMwebp_QL65_.jpg",
   },
+
   {
-    title: "Jewelry",
-    name: "jewelry",
+    title: "Jewelery",
+    name: "jewelery",
     imgLink:
-      "http://m.media-amazon.com/images/I/71r7eWuCsaL._AC_UL480_FMwebp_QL65_.jpg",
+      "https://m.media-amazon.com/images/I/71r7eWuCsaL.AC_UL480_FMwebp_QL65.jpg",
   },
 ];
+//   {
+//     title: "Jewelry",
+//     name: "jewelry",
+//     imgLink:
+//       "http://m.media-amazon.com/images/I/71r7eWuCsaL._AC_UL480_FMwebp_QL65_.jpg",
+//   },
+// ];
 
 // export const categoryInfos = [
 //   {
@@ -49,9 +57,6 @@ export const categoryInfos = [
 //       "http://m.media-amazon.com/images/I/71r7eWuCsaL.AC_UL480_FMwebp_QL65.jpg",
 //   },
 // ];
-
-
-
 
 // export const categoryInfos = [
 //   {
