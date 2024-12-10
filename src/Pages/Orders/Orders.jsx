@@ -54,7 +54,7 @@ function Orders() {
                   <ProductCard
                     key={index}
                     flex={true}
-                    product={order} // Fix typo: `prodduct` -> `product`
+                    product={order}
                   />
                 ))}
               </div>

@@ -12,13 +12,14 @@
     padding: 20px;
 }
 
+
 .orders__container p { 
   padding: 12px;
 }
 
 .orders__container img {
-    width: 100px !important;    
+  width: 100px !important;    
 }
 .orders__container div {
 height: auto !important;;
-}
+}  
